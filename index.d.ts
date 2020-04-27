@@ -4,24 +4,34 @@ declare module 'zenvia-api' {
     senha: string,
     body: object
   ): Promise<ISendResponse>;
+
   export function getStatus(
     conta: string,
     senha: string,
     id: any
   ): Promise<ISmsStatus>;
+
   export function list(
     conta: string,
     senha: string
   ): Promise<IReceivedResponse>;
+
+  export function sendMultiple(
+    conta: string,
+    senha: string,
+    body: ISendSmsMultiRequest
+  ): Promise<ISendSmsMultiResponse>;
+}
+
+declare interface ISendResponseItem {
+  statusCode: string;
+  statusDescription: string;
+  detailCode: string;
+  detailDescription: string;
 }
 
 declare interface ISendResponse {
-  sendSmsResponse: {
-    statusCode: string;
-    statusDescription: string;
-    detailCode: string;
-    detailDescription: string;
-  };
+  sendSmsResponse: ISendResponseItem;
 }
 
 declare interface IReceivedMessages {
@@ -55,4 +65,23 @@ declare interface ISmsStatus {
     detailCode: string;
     detailDescription: string;
   };
+}
+
+declare interface ISendSmsMultiResponse {
+  sendSmsResponseList: ISendResponseItem[];
+}
+
+declare interface ISendSmsRequestList {
+  from: string;
+  to: string;
+  schedule: string;
+  msg: string;
+  callbackOption: string;
+  id: number;
+  flashSms: boolean;
+}
+
+declare interface ISendSmsMultiRequest {
+  aggregateId: number;
+  sendSmsRequestList: ISendSmsRequestList[];
 }

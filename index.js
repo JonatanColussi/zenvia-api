@@ -13,4 +13,9 @@ module.exports = {
    * @return Promisse
    */
   list: require('./lib/list'),
+
+  /**
+   * @return Promisse
+   */
+  sendMultiple: require('./lib/send_multiples_sms'),
 };
