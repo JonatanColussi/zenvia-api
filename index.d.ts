@@ -68,7 +68,9 @@ declare interface ISmsStatus {
 }
 
 declare interface ISendSmsMultiResponse {
-  sendSmsResponseList: ISendResponseItem[];
+  sendSmsMultiResponse: {
+    sendSmsResponseList: ISendResponseItem[];
+  }
 }
 
 declare interface ISendSmsRequestList {
