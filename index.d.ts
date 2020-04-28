@@ -19,7 +19,7 @@ declare module 'zenvia-api' {
   export function sendMultiple(
     conta: string,
     senha: string,
-    body: ISendSmsMultiRequest
+    body: ISendSmsMultiRequest | ISendSmsRequestList[]
   ): Promise<ISendSmsMultiResponse>;
 }
 
